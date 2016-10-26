@@ -1,0 +1,42 @@
+<section class="jumbotron search-form">
+  <h1>Find Cheap Flights With Ryanair</h1>
+  <form class="row">
+    <div class="form-group col-xs-12 col-sm-6">
+      <label for="fromInput">From</label>
+      <input #fromVal type="text" name="from" class="form-control" id="fromInput" autocomplete="off"
+             [(ngModel)]="from" [ngbTypeahead]="searchFrom" (selectItem)="selectFromAirport($event)">
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-6">
+      <label for="toInput">To</label>
+      <input #toVal type="text" name="to" class="form-control" id="toInput" autocomplete="off" [(ngModel)]="to"
+             [disabled]="fromAirport==null" [ngbTypeahead]="searchTo" (selectItem)="selectToAirport($event)">
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-6">
+      <label for="departInput">Depart date</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="departInput" placeholder="yyyy-mm-dd" name="depart" autocomplete="off"
+               [(ngModel)]="departDate" [minDate]="today" ngbDatepicker #departDP="ngbDatepicker" (focus)="departDP.open()">
+        <div class="input-group-addon date-picker" (click)="departDP.toggle()" >
+          <img src="/assets/img/calendar-icon.svg"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-6">
+      <label for="returnInput">Return date</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="returnInput" placeholder="yyyy-mm-dd" name="return" autocomplete="off"
+               [(ngModel)]="returnDate" [minDate]="departDate" ngbDatepicker #returnDP="ngbDatepicker" (focus)="returnDP.open()">
+        <div class="input-group-addon date-picker" (click)="returnDP.toggle()" >
+          <img src="/assets/img/calendar-icon.svg"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group submit-row col-xs-12">
+      <button type="submit" class="btn btn-primary btn-lg" [routerLink]="getLink()" [disabled]="!(fromAirport!=null && toAirport!=null && departDate && returnDate)">Search</button>
+    </div>
+  </form>
+</section>

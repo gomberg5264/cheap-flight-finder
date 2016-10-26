@@ -1,0 +1,31 @@
+<p>
+  {{flightResult.dateFrom}}<br>
+  {{flightResult.dateTo}}<br>
+  {{flightResult.currency}}<br>
+  {{flightResult.price}}<br>
+</p>
+
+<div class="flight-result card">
+  <div class="card-block">
+    <h4 class="card-title">Flight Details</h4>
+    <div class="row flight-data">
+      <div class="card-text col-xs-12 col-md-4">
+        <strong>Departs</strong>
+        <p>{{from}}</p>
+        {{flightResult.dateFrom}}
+        <em>{{flightResult.timeFrom}}</em>
+      </div>
+      <div class="text-xs-right card-text col-xs-12 col-md-4">
+        <strong>Arrives</strong>
+        <p>{{to}}</p>
+        {{flightResult.dateTo}}
+        <em>{{flightResult.timeTo}}</em>
+      </div>
+      <div class="price text-xs-center card-text col-xs-12 col-md-4">
+        <strong>Price</strong>
+        <span class="flight-price">{{flightResult.currency}}{{flightResult.price | round:2}}</span>
+      </div>
+    </div>
+    <p class="card-text"><small class="text-muted">Checked 1 minute ago</small></p>
+  </div>
+</div>
