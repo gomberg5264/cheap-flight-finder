@@ -4,12 +4,13 @@ Cheap Flight Finder is an application for searching cheap flights between two ai
 
 ## Installation notes
 
-After cloning the repo the following commands have to be run:
+After cloning the repository the following commands have to be run:
+
 1. npm install
 2. npm start
 3. open http://localhost:4200/
 
-It's also possible to run the application in production mode with running 'npm prod' instead of 'npm start'.
+It's also possible to run the application in production mode with running 'npm run prod' instead of 'npm start'.
 
 ## Development notes
 
