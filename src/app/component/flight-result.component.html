@@ -1,24 +1,46 @@
-<div class="flight-result card">
-  <div class="card-block">
-    <h4 class="card-title">Flight Details</h4>
-    <div class="row flight-data">
-      <div class="card-text col-xs-12 col-md-4">
-        <strong>Departs</strong>
-        <p>{{from}}</p>
-        {{flightResult.dateFrom}}
-        <em>{{flightResult.timeFrom}}</em>
-      </div>
-      <div class="text-xs-right card-text col-xs-12 col-md-4">
-        <strong>Arrives</strong>
-        <p>{{to}}</p>
-        {{flightResult.dateTo}}
-        <em>{{flightResult.timeTo}}</em>
-      </div>
-      <div class="price text-xs-center card-text col-xs-12 col-md-4">
-        <strong>Price</strong>
-        <span class="flight-price">{{flightResult.currency}}{{flightResult.price | round:2}}</span>
+<div class="flight-result">
+  <section *ngIf="flightResult != null">
+    <div *ngIf="flightResult.error != null">
+      <h1>Ooops, Something went wrong :(</h1>
+      <h2>The reason is</h2>
+      <div class="alert alert-{{flightResult.error.type == warningType ? 'warning' : 'danger'}}" role="alert">
+        <h3>{{flightResult.error.messageLine1}}</h3>
+        {{flightResult.error.messageLine2}}
       </div>
     </div>
-    <p class="card-text"><small class="text-muted">Checked 1 minute ago</small></p>
+    <div *ngIf="flightResult.error == null">
+      <h1>The cheapest flight we found for you</h1>
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">Flight Details</h4>
+          <div class="row flight-data">
+            <div class="card-text col-xs-12 col-md-4 col-lg-3">
+              <strong>Departs</strong>
+              <p>{{from}}</p>
+              {{flightResult.dateFrom}}
+              <em>{{flightResult.timeFrom}}</em>
+            </div>
+            <div class="hidden-md-down plane-cont col-lg-3">
+              <img src="/assets/img/airplane.png"/>
+            </div>
+            <div class="text-xs-right card-text col-xs-12 col-md-4 col-lg-3">
+              <strong>Arrives</strong>
+              <p>{{to}}</p>
+              {{flightResult.dateTo}}
+              <em>{{flightResult.timeTo}}</em>
+            </div>
+            <div class="price text-xs-center card-text col-xs-12 col-md-4 col-lg-3">
+              <strong>Price</strong>
+              <span class="flight-price">{{flightResult.currency}}{{flightResult.price | round:2}}</span>
+            </div>
+          </div>
+          <p class="card-text"><small class="text-muted">Checked 1 minute ago</small></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div *ngIf="flightResult == null" class="load-result">
+    <img alt="Loading" width="100%" src="/assets/img/gears.gif">
+    <p style="font-weight:bold;font-size:2rem;">Searching</p>
   </div>
 </div>

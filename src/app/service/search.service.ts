@@ -3,7 +3,9 @@ import { Observable }     from 'rxjs/Observable';
 
 import { Injectable } from '@angular/core';
 
-import FlightResult from '../data/flight-result';
+import FlightResult from '../model/flight-result';
+import FlightError from "../model/flight-error";
+import { FlightErrorType } from "../model/flight-error";
 
 @Injectable()
 export class SearchService {
@@ -16,16 +18,25 @@ export class SearchService {
       .catch(this.handleError);
   }
 
-  private extractCheapFlight(res: Response) {
+  private extractCheapFlight(res: Response) : FlightResult {
     let body = res.json();
     let flightResult : FlightResult = null;
     if (body) {
-      let flight = body.flights.sort((f1, f2) => f1.price > f2.price)[0];
-      let [dateFrom, timeFrom] = flight.dateFrom.split("T");
-      let [dateTo, timeTo] = flight.dateTo.split("T");
-      flightResult = new FlightResult(dateFrom, dateTo, timeFrom.replace(/Z/g, ""), timeTo.replace(/Z/g, ""), flight.currency, flight.price);
+      try {
+        let flights = body.flights.sort((f1, f2) => f1.price > f2.price);
+        if (flights.length < 1) {
+          flightResult = new FlightResult(new FlightError(FlightErrorType.WARNING, "We didn't find any results with the parameters you supplied.", "Please change your search criteria or try again later."));
+        } else {
+          let flight = flights[0];
+          let [dateFrom, timeFrom] = flight.dateFrom.split("T");
+          let [dateTo, timeTo] = flight.dateTo.split("T");
+          flightResult = new FlightResult(null, dateFrom, dateTo, timeFrom.replace(/Z/g, ""), timeTo.replace(/Z/g, ""), flight.currency, flight.price);
+        }
+      } catch (e) {
+        flightResult = new FlightResult(new FlightError(FlightErrorType.ERROR, "There was an error with the server response.", "Sorry for the inconveniences. We're working on fixing the problem."));
+      }
     }
-    return flightResult || { };
+    return flightResult;
   }
 
   private handleError (error: Response | any) {

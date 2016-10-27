@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from '../../../node_modules/rxjs/Observable.d';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
-import Airport from '../data/airport';
+import Airport from '../model/airport';
 import { AutoSuggestService } from "../service/auto-suggest.service.ts";
 
 
@@ -14,10 +14,10 @@ import { AutoSuggestService } from "../service/auto-suggest.service.ts";
 })
 export class SearchFormComponent implements OnInit {
   errorMessage : string;
-  @Input() from : string = "";
-  @Input() to : string = "";
-  @Input() departDate : any;
-  @Input() returnDate : any;
+  from : string = "";
+  to : string = "";
+  departDate : any;
+  returnDate : any;
   fromAirport : Airport = null;
   toAirport : Airport = null;
   today: NgbDateStruct;

@@ -2,8 +2,8 @@ import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 
 import { Injectable } from '@angular/core';
-import Country from '../data/country';
-import Airport from '../data/airport';
+import Country from '../model/country';
+import Airport from '../model/airport';
 
 @Injectable()
 export class AutoSuggestService {

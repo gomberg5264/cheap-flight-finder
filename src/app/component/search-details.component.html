@@ -1,14 +1,16 @@
-<section class="search-details row">
-  <h1 class="col-xs-12">Your Search Details</h1>
-  <strong class="col-xs-12">You travel from</strong>
-  <p class="col-xs-12">{{from}}</p>
-  <strong class="col-xs-12">You travel to</strong>
-  <p class="col-xs-12">{{to}}</p>
-  <strong class="col-xs-12">Date of your departure</strong>
-  <p class="col-xs-12">{{departDate | date}}</p>
-  <strong class="col-xs-12">Date of your return</strong>
-  <p class="col-xs-12">{{returnDate | date}}</p>
-  <div class="col-xs-12 button-row text-xs-center">
-    <a class="btn btn-danger" routerLink="" role="button">Back to Search form</a>
+<section class="row">
+  <div class="search-details col-xs-12">
+    <h1>Your Search Details</h1>
+    <strong>You travel from</strong>
+    <p>{{from}}</p>
+    <strong>You travel to</strong>
+    <p>{{to}}</p>
+    <strong>Date of your departure</strong>
+    <p>{{departDate | date}}</p>
+    <strong>Date of your return</strong>
+    <p>{{returnDate | date}}</p>
+    <div class="button-row text-xs-center">
+      <a class="btn btn-danger" routerLink="" role="button">Back to Search</a>
+    </div>
   </div>
 </section>

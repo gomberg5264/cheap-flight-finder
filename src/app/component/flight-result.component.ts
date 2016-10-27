@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SearchService } from "../service/search.service.ts";
 
-import FlightResult from '../data/flight-result';
+import FlightResult from '../model/flight-result';
+import FlightError from "../model/flight-error";
+import { FlightErrorType } from "../model/flight-error";
 
 @Component({
   selector: 'flight-result',
@@ -17,9 +19,12 @@ export class FlightResultComponent implements OnInit {
   @Input() departDate : any;
   @Input() returnDate : any;
   errorMessage : string;
-  flightResult : FlightResult = new FlightResult();
+  flightResult : FlightResult = null;
+  warningType : FlightErrorType;
 
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: SearchService) {
+    this.warningType = FlightErrorType.WARNING;
+  }
 
   ngOnInit() {
     this.searchService.getFlight(this.fromIata, this.toIata, this.departDate, this.returnDate)

@@ -17,7 +17,7 @@
       <label for="departInput">Depart date</label>
       <div class="input-group">
         <input type="text" class="form-control" id="departInput" placeholder="yyyy-mm-dd" name="depart" autocomplete="off"
-               [(ngModel)]="departDate" [minDate]="today" ngbDatepicker #departDP="ngbDatepicker" (focus)="departDP.open()">
+               [(ngModel)]="departDate" [minDate]="today" ngbDatepicker #departDP="ngbDatepicker">
         <div class="input-group-addon date-picker" (click)="departDP.toggle()" >
           <img src="/assets/img/calendar-icon.svg"/>
         </div>
@@ -28,7 +28,7 @@
       <label for="returnInput">Return date</label>
       <div class="input-group">
         <input type="text" class="form-control" id="returnInput" placeholder="yyyy-mm-dd" name="return" autocomplete="off"
-               [(ngModel)]="returnDate" [minDate]="departDate" ngbDatepicker #returnDP="ngbDatepicker" (focus)="returnDP.open()">
+               [(ngModel)]="returnDate" [minDate]="departDate" ngbDatepicker #returnDP="ngbDatepicker">
         <div class="input-group-addon date-picker" (click)="returnDP.toggle()" >
           <img src="/assets/img/calendar-icon.svg"/>
         </div>

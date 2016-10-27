@@ -1,4 +1,7 @@
+import FlightError from "./flight-error";
+
 export default class FlightResult {
+  error : FlightError;
   dateFrom : string;
   dateTo : string;
   timeFrom : string;
@@ -6,7 +9,8 @@ export default class FlightResult {
   currency: string;
   price : number;
 
-  constructor(dateFrom = "", dateTo = "", timeFrom = "", timeTo = "", currency = "", price = 0) {
+  constructor(error = null, dateFrom = "", dateTo = "", timeFrom = "", timeTo = "", currency = "", price = 0) {
+    this.error = error;
     this.dateFrom = dateFrom;
     this.dateTo = dateTo;
     this.timeFrom = timeFrom;
