@@ -14,5 +14,13 @@ It's also possible to run the application in production mode with running 'npm p
 ## Development notes
 
 The application is written in Angular 2. I used angular-cli 1.0.0-beta.16 for generating the starter application. I use Less for CSS preprocessing and the alpha version of Bootstrap 4.
+I used Webstorm IDE for the development.
 
 ## Environment notes
+
+The project was build with Node.js version 5.10.1 and NPM version 3.8.3.
+
+## Online demo
+
+You can also try the application online on this URL:
+[https://pacific-meadow-44190.herokuapp.com/](https://pacific-meadow-44190.herokuapp.com/)
