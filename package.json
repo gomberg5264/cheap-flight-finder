@@ -5,7 +5,6 @@
   "angular-cli": {},
   "scripts": {
     "start": "ng serve",
-    "postinstall": "typings install",
     "lint": "tslint \"src/**/*.ts\"",
     "prod": "ng serve --prod",
     "test": "ng test",
