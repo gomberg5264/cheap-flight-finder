@@ -14,6 +14,7 @@ import { RyanairCheapFlightFinderRoutingModule } from "./app-routing.module";
 import { FlightResultComponent } from './component/flight-result.component.ts';
 import { SearchDetailsComponent } from './component/search-details.component.ts';
 import Round from "./filter/round";
+import Time from "./filter/time";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import Round from "./filter/round";
     SearchComponent,
     FlightResultComponent,
     SearchDetailsComponent,
-    Round
+    Round,
+    Time
   ],
   imports: [
     BrowserModule,

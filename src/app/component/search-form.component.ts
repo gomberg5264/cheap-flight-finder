@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Observable } from '../../../node_modules/rxjs/Observable.d';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
@@ -27,6 +27,9 @@ export class SearchFormComponent implements OnInit {
     this.today = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
   }
 
+  @ViewChild('toVal') toValVC;
+  @ViewChild('depart') departVC;
+
   ngOnInit() {
   }
 
@@ -47,10 +50,12 @@ export class SearchFormComponent implements OnInit {
 
   selectFromAirport($selectItem) {
     this.fromAirport = $selectItem.item;
+    setTimeout(() => this.toValVC.nativeElement.focus(), 10);
   }
 
   selectToAirport($selectItem) {
     this.toAirport = $selectItem.item;
+    this.departVC.nativeElement.focus();
   }
 
   getLink() {
