@@ -7,7 +7,7 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './searchpage.component.html',
   styleUrls: ['./searchpage.component.less']
 })
-export class SearchComponent implements OnInit {
+export class SearchPageComponent implements OnInit {
   from: string;
   to: string;
   fromIata: string;
